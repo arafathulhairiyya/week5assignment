@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tr,
+        td {
+            padding: 3px;
+
+        }
+
+       
+
+        .nameerror,
+        .emailerror,
+        .passworderror {
+            display: none;
+             color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <form>
+        <h1>REGISTRATION FORM</h1>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" placeholder="enter your name " required id="name"></td>
+                <td> <span class="nameerror">Name cannot be empty</span></td>
+            </tr>
+
+            <tr>
+                <td>E-Mail:</td>
+                <td><input type="text" placeholder="enter your Email"  id="email"></td>
+                <td> <span class="emailerror">Enter a valid e-mail</span></td>
+            </tr>
+
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" placeholder="enter the Password " id="password" ></td>
+                <td><span class="passworderror">Password must contain minimum of 6 Characters</span></td>
+            </tr>
+            <tr>
+                <td><input type="submit" id="submit"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        var submit = document.getElementById("submit")
+        submit.addEventListener("click", function () {
+            event.preventDefault()
+     
+            var nameRegex = /^[a-zA-Z]+$/
+            var emailRegex = /^[a-zA-Z0-9]+@gmail\.com/
+            var passwordRegex =/^[a-zA-Z0-9]{6}[a-z-Z0-9]*$/
+            var name = document.getElementById("name")
+            var email = document.getElementById("email")
+            var password = document.getElementById("password")
+            var nameerror = document.querySelector(".nameerror")
+            var emailerror = document.querySelector(".emailerror")
+            var passworderror = document.querySelector(".passworderror")
+            var validate = true
+if(nameRegex.test(name.value) == false)
+{
+   nameerror.style.display="inline"
+   validate = false
+}
+else{
+   nameerror.style.display="none"  
+}
+if(emailRegex.test(email.value) == false)
+{
+   emailerror.style.display="inline"
+    validate = false
+}
+else{
+   emailerror.style.display="none"  
+}
+if(passwordRegex.test(password.value) == false)
+{
+   passworderror .style.display="inline"
+    validate = false
+}
+else{
+   passworderror .style.display="none"  
+}
+if(validate == true){
+    alert("Your form is submitted successfully")
+}
+
+
+        })
+
+
+    </script>
+</body>
+
+</html>

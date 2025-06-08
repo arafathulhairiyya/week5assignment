@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            align-items: center;
+            display: flex;
+            padding-top: 25px;
+            flex-direction: column;
+            background-color: dimgray;
+        }
+
+        textarea {
+            border: 3px black solid;
+            border-radius: 10px;
+        }
+
+        #warning {
+            color: red;
+            display: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="message">
+        <h1>MESSAGE BOX</h1>
+        <h4>only upto 200 characters</h4>
+        <textarea id="message" rows="10" cols="50" placeholder="enter your message here..."></textarea>
+    </div>
+    <div class="char"><span id="char-counter">0/200</span>
+        <br>
+        <span id="warning">Characters limit reached</span>
+    </div>
+
+
+    <script>
+        const message = document.getElementById("message");
+        const charcounter = document.getElementById("char-counter");
+        const warning = document.getElementById("warning");
+        const max = 200;
+        message.addEventListener("input", function () {
+            charcounter.textContent = message.value.length + "/" + max;
+            const length = message.value.length;
+            if (length > max) {
+               warning.style.display="block";
+                message.value = message.value.substring(0,max);
+               
+            }
+            else {
+                warning.style.display = none;
+            }
+            
+
+
+
+        })
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
